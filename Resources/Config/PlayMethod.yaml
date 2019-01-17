@@ -1,0 +1,9 @@
+PlayMethod:
+  19:
+    name: '不定位膽-前三一碼'
+    BasicWinningPrice: 6.6
+    Increasement: 0.00733
+  120205:
+    name: '大小單雙'
+    BasicWinningPrice: 7.2
+    Increasement: 0.00800
