@@ -64,8 +64,8 @@ Verify Bet Order
     ${MoneyAfterBetting}=    Convert To Number    ${MoneyAfterBetting}    3
     Should Be Equal    ${MoneyAfterBetting}    ${CurrentMoney}
     Set Suite variable    ${MoneyAfterBetting}    ${MoneyAfterBetting}
-    Run Keyword If    ${RunFlag}==1    Run Keywords    appendToDict    ${BetOrderList}    OrderID=${OrderID}    BetNumber=${BetNumber}    PlayMethodID=${WF_ID}
-    ...    AND    Set Suite variable    ${BetOrderList}    ${BetOrderList}
+    Run Keyword If    ${RunFlag}==1    Run Keywords    append_to_dict    ${BetOrderList}    OrderID=${OrderID}    BetNumber=${BetNumber}    PlayMethodID=${WF_ID}
+    ...    AND    Set Suite Variable    ${BetOrderList}    ${BetOrderList}
     ...    AND    Log    Bet Number is "${BetNumber}"    level=WARN
     ...    AND    Log    Order ID is "${OrderID}"    level=WARN
     ...    AND    Log    Current Wallet After Bet = ${CurrentMoney}    level=WARN
@@ -85,16 +85,19 @@ Verify Betting Result
 
 Verify Betting Result If Bet Order Created Success
     [Documentation]    Check current wallet is correct after winning number generated.
-    ${dictLength}=    dictLength    ${BetOrderList}
+    Set Suite variable    ${MoneyAfterSettling}    ${MoneyAfterBetting}
+    ${dictLength}=    dict_length    ${BetOrderList}
     : FOR    ${x}    IN RANGE    0    ${dictLength}
     \    ${WinningCount}=    Settle Bet Result    ${BetOrderList[${x}]['PlayMethodID']}    ${BetOrderList[${x}]['BetNumber']}    ${WinningNumber}
-    \    Log    Hit Count = ${WinningCount}    level=WARN
-    \    ${CurrentMoney}=    Get Current Money
+    \    ${WinningPrize}=    evaluate    ${WinningCount}*7.267*${CurrentMultiple}
+    \    Log    Play Method ID = ${BetOrderList[${x}]['PlayMethodID']}, Bet Number = ${BetOrderList[${x}]['BetNumber']}, Hit Count = ${WinningCount}, Winning Prize = ${WinningPrize}    level=WARN
 #    \    ${MoneyAfterSettling}=    evaluate    ${MoneyAfterBetting}+(${WinningCount}*6.6*${CurrentMultiple})+9.1
-    \    ${MoneyAfterSettling}=    evaluate    ${MoneyAfterBetting}+(${WinningCount}*7.267*${CurrentMultiple})
+    \    ${MoneyAfterSettling}=    evaluate    ${MoneyAfterSettling}+${WinningPrize}
     \    ${MoneyAfterSettling}=    Convert To Number    ${MoneyAfterSettling}    3
-#    \    Should Be Equal    ${MoneyAfterSettling}    ${CurrentMoney}
-    \    Set Suite variable    ${MoneyAfterTesting}    ${CurrentMoney}
+    \    Set Suite variable    ${MoneyAfterSettling}    ${MoneyAfterSettling}
+    ${CurrentMoney}=    Get Current Money
+    Set Suite variable    ${MoneyAfterTesting}    ${CurrentMoney}
+    Should Be Equal    ${MoneyAfterSettling}    ${MoneyAfterTesting}
     Log    Current Wallet After Reward = ${CurrentMoney}    level=WARN
 
 Check WinLose

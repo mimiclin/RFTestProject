@@ -36,12 +36,14 @@ System Setup
 Bet Multiple Times
     [Tags]  APIDemo
     Get Init Money
-    : FOR    ${i}    IN RANGE    1    3
+    : FOR    ${i}    IN RANGE    1    6
     \    Log    Run Times = ${i}    level=WARN
     \    Get Current Money Before Betting
     \    Get Current Draw Number
-    \    Bet 三星不定位胆-前三一码    12345
-    \    Bet 三星不定位胆-前三一码    67890
+    \    Bet 三星不定位胆-前三一码    1
+    \    Bet 三星不定位胆-前三一码    23
+    \    Bet 三星不定位胆-前三一码    456
+    \    Bet 三星不定位胆-前三一码    7890
     \    Get Winning Number
     \    Verify Betting Result
     \    Check WinLose

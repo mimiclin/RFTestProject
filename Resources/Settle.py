@@ -48,17 +48,15 @@ def SettleBetResultByMethod(MethodID, BetNumber, WinningNumber):
         return(HitCnt)
 
 
-def appendToDict(dictObj, **kwargs):
-    # if dictObj:
-    cnt = len(dictObj)
-    # dictObj[].update(kwargs)
-    dictObj[cnt] = kwargs
-    return dictObj
+def append_to_dict(dictionary, **kwargs):
+    cnt = len(dictionary)
+    dictionary[cnt] = kwargs
+    return dictionary
 
 
-def dictLength(dictObj):
-    if dictObj:
-        return len(dictObj)
+def dict_length(dictionary):
+    if dictionary:
+        return len(dictionary)
     else:
         return 0
 
@@ -73,4 +71,4 @@ if __name__ == '__main__':
     # print CalcCombination('012345', 2)
     # print len(CalcCombination('012345', 2))
     # print appendToDict({0: {'OrderID': 'qqeerr', 'BetNumber': 67890}}, BetNumber=67890, OrderID="qqeerr")
-    print dictLength({0: {'OrderID': 'qqeerr', 'BetNumber': 67890}, 1: {'OrderID': 'qqeerr', 'BetNumber': 67890}})
+    print dict_length({0: {'OrderID': 'qqeerr', 'BetNumber': 67890}, 1: {'OrderID': 'qqeerr', 'BetNumber': 67890}})
