@@ -1,6 +1,7 @@
 *** Variables ***
 ${Xpath_Lottery_Entry}    xpath=//div/ul[@id='navbox']/li[@module='lottery']
-${Xpath_Lottery_Type}    xpath=//div[@class[contains(.,'gct_logo')]]
+${Xpath_Lottery_Type}    xpath=//div[@class='gct_logo cqssc']
+#${Xpath_Lottery_Type}    xpath=//div[@class[contains(.,'gct_logo')]]
 ${Xpath_Lottery_Method}    xpath=//div[@id='wf_class']/span[@id='wf_bdw']
 ${Xpath_Num_0}    xpath=//div[@name='num_group_bdw'][@value='0']
 ${Xpath_Num_1}    xpath=//div[@name='num_group_bdw'][@value='1']

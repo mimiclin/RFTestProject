@@ -35,9 +35,9 @@ Choose Lottery Kind
     [Documentation]    選擇彩種
     [Tags]    Lottery
     Ignore Effect Elements
-    Choose Lottery Kind    96
+    Choose Lottery Kind    67
     Ignore Effect Elements
-    Wait and click    ${Xpath_Lottery_Method}
+    Choose Play Method    1
 
 Choose Wager Number Then Wager
     [Documentation]    選擇彩球並投注

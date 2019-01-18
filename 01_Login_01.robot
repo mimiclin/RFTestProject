@@ -89,6 +89,7 @@ Verify valid login
 
 Test end
     [Documentation]    關閉瀏覽器
+    [Tags]    Login
     Close Browser
 
 *** Keywords ***

@@ -26,5 +26,7 @@ Confirm Login Error Message
     Wait And Click    ${Btn_LoginErrMsg}
 
 Confirm IntroPage
-    Wait Until Element Is Visible    ${Btn_IntroConfirm}
-    Wait And Click    ${Btn_IntroConfirm}
+    ${checkStatus}=    Run keyword and return status    element should be visible    ${Btn_IntroConfirm}
+    Run Keyword If    ${checkStatus}    Wait and click    ${Btn_IntroConfirm}
+#    Wait Until Element Is Visible    ${Btn_IntroConfirm}
+#    Wait And Click    ${Btn_IntroConfirm}

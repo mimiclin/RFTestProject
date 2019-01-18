@@ -12,7 +12,7 @@ Library           Resources/Settle.py
 
 *** Variables ***
 ${command_id}     521
-${Lottery_ID}     29
+${Lottery_ID}     67
 ${DrawNumber}     201901070733
 #${WF_ID}          120205
 #${BetNumber}    3,32
